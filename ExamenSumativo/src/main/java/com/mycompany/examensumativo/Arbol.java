@@ -15,15 +15,17 @@ public class Arbol {
         raiz = null;
     }
 
-    public void insertar(String pathDirectorio) {
-        raiz = insertarRecursivo(raiz, pathDirectorio);
+    public void insertar(String valor) {
+        raiz = insertarRecursivo(raiz, valor);
     }
 
-    public NodoArbol insertarRecursivo(NodoArbol actual, String pathDirectorio) {
+    public NodoArbol insertarRecursivo(NodoArbol actual, String valor) {
         if (actual == null) {
-            return new NodoArbol(pathDirectorio);
+            return new NodoArbol(valor);
         }
-        if (pathDirectorio.compareTo(actual.datos) < 0) {
+        int valorActual = Integer.parseInt(actual.datos);
+        int valorNuevo = Integer.parseInt(valor);
+        if (valorNuevo < valorActual) {
             actual.izquierda = insertarRecursivo(actual.izquierda, pathDirectorio);
         } else {
             actual.derecha = insertarRecursivo(actual.derecha, pathDirectorio);
